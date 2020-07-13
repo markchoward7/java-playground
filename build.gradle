@@ -12,3 +12,12 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '6.5.1'
 }
+
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'com.galvanize.Application'
+        )
+    }
+}
